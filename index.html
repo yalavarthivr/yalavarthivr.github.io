@@ -1,136 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="paper/js/paper-full.js"></script>
-    <link rel="stylesheet" type="text/css" href="paper/css/style.css">
-
-    <script type="text/paperscript" canvas = "canvas">
-        var width, height, center;
-        var points = 10;
-        var smooth = true;
-        var path = new Path({
-            fillColor: 'black'
-        });
-        var mousePos = view.center / 2;
-        var pathHeight = mousePos.y;
-        initializePath();
-
-        function initializePath() {
-            center = view.center;
-            width = view.size.width;
-            height = view.size.height / 2;
-            path.segments = [];
-            path.add(view.bounds.bottomLeft);
-            for (var i = 1; i < points; i++) {
-                var point = new Point(width / points * i, center.y);
-                path.add(point);
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>yalavarthi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
+        <meta name="description" content="idontcare personal webpage">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <article>
+            <main>
+                <div>
+                venkata rahul y <br> strategy:design::code:game
+                </div>
+                <div>
+                a dropout from <a href="https://tu-dresden.de/?set_language=en" target="_blank">TU-D</a>
+                </div>
+                <div class="span">
+                    "it is not the strongest of the species that survives, nor the most intelligent that survives. it is the one that is the most adaptable to change." ~ charles darwin
+                </div>
+                <div class="span1">
+                    email for inquiries or just to say : <a class="change" href="mailto:yalavarthivenkata@yahoo.com?subject=">Hi</a>
+                </div>
+                <div>
+                    external:<br>
+                    <a href="https://twitter.com/venkatrahul_y" target="_blank">twitter</a><br>
+                    <a href="https://www.instagram.com/venkatarahuly/" target="_blank">instagram</a><br>
+                    <a href="https://github.com/yalavarthivr" target="_blank">github</a><br>
+                    <a href="javascript:tryit()" >website</a>
+                </div> 
+                <div class="invi"><ul>
+                    <li><a class="try" href="certifications.html">certifications</a></li>
+                    <li><a class="try" href="randomthings.html">random things</a></li>
+                    <li><a class="try" href="lately.html">lately,...</a></li></ul>
+                </div>
+            </main>
+            <nav>
+                <li><a class="try" href="certifications.html">certifications</a></li>
+                    <li><a class="try" href="randomthings.html">random things</a></li>
+                    <li><a class="try" href="lately.html">lately,...</a></li>
+            </nav>
+            <footer> footer intentionally placed here </footer>        
+        </article>
+        
+        <script type="text/javascript">
+            function tryit(){
+                alert("dude !! you are on my website ...");
             }
-            path.add(view.bounds.bottomRight);
-            path.fullySelected = true;
-        }
+			// Old “tiroir” code
+			const s = shuffle([
+				// ---- cheers
+				'Hi',
+				'Yo',
+				'Ciao',
+				'Viva',
+				'Salut',
+				'Hello',
+				'Grüezi',
+				'Cheers',
+				'Prosit',
+				'Oooooh',
+				'Olà olà',
+				'Bonjour',
+				'Namaste',
+				'Guten Tag',
+				'Shaba-daba',
+				'Go to hell',
+				'Buona notte',
+				'Buenas dias',
+				'Hasta la victoria',
+				// ---- love
+				'I love you',
+				'I hate you',
+				// '“I ♥ ♠ ♦ ♣”',
+				'I love my cat',
+				'I love my dog',
+				'I want to be your slave',
+				// ---- thats
+				'Life is life',
+				'I liked my dinner',
+				'Gilgamesh is my father',
+				'I don’t want to write you',
+				'It’s time for a new haircut',
+				'Sex or fox are better than fax',
+				'It’s common to say it’s common',
+				'Aaaah is not the same as ooooh',
+				// ---- colors
+				'Blue is my favourite color',
+				'Pink is my favourite color',
+				'Gray is my favourite color',
+				'Ocra is my favourite color',
+				// ---- numbers
+				'Two has three letters',
+				'Three has five letters',
+				'Five has four letters',
+				'Four has four letters',
+				'π is close to, but not exactly 3.1415',
+				'that 1 one stays to 2 twos like 3 trees stay to 4 Fords',
+				// ---- animals
+				'Slick worms eat silk',
+				'Sheep sings while ship sinks',
+				'Gold is fish and golf is dish',
+				'I saw a cat sleeping in a box',
+				'The fly flies and the flies fly',
+				'that a bird’s burden is the weight of a feather',
+				'that bird is feather’s father but not vice-versa',
+			])
 
-        function onFrame(event) {
-            pathHeight += (center.y - mousePos.y - pathHeight) / 10;
-            for (var i = 1; i < points; i++) {
-                var sinSeed = event.count + (i + i % 10) * 100;
-                var sinHeight = Math.sin(sinSeed / 200) * pathHeight;
-                var yPos = Math.sin(sinSeed / 100) * sinHeight + height;
-                path.segments[i].point.y = yPos;
-            }
-            if (smooth)
-                path.smooth({ type: 'continuous' });
-        }
+			let c = 0;
+			const e = document.querySelector('.change')
+			function swap(){
+				c = ++c % s.length
+				e.href = 'mailto:yalavarthivenkata@yahoo.com?subject=' + s[c]
+				e.innerText = s[c]
+			}
+			swap()
+			setInterval(swap, 9000)
 
-        function onMouseMove(event) {
-            mousePos = event.point;
-        }
+			function shuffle(array){
+				for(let i=array.length-1; i>0; i--){
+					const j = Math.floor(Math.random() * i)
+					;[array[i], array[j]] = [array[j], array[i]]
+				}
+				return array
+			}
 
-        function onMouseDown(event) {
-            smooth = !smooth;
-            if (!smooth) {
-                // If smooth has been turned off, we need to reset
-                // the handles of the path:
-                for (var i = 0, l = path.segments.length; i < l; i++) {
-                    var segment = path.segments[i];
-                    segment.handleIn = segment.handleOut = null;
-                }
-            }
-        }
-
-        // Reposition the path whenever the window is resized:
-        function onResize(event) {
-            initializePath();
-        }
-    </script>
-    <title></title>
-    <style>
-        #overlay {
-          position: fixed;
-          display: none;
-          width: 100%;
-          height: 30%;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0,0,0,0);
-          z-index: 2;
-          cursor: pointer;
-        }
-        
-        #text{
-          position: relative;
-          text-align: justify;
-          font-size: 50px;
-          color: black;
-          transform: translate(-50%,-50%);
-          -ms-transform: translate(-50%,-50%);
-        }
-        h1{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: 25px;
-            text-align: center;
-            font-style: normal;
-            font-weight: 600;
-        }
-        b{
-            font-weight: 300;
-        }
-        p{
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 15px;
-            text-align: center;
-            padding-top: 2%;
-        }
-        a{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            color: black;
-            padding-left: 50%;
-        }
-        
-        </style>
-        </head>
-        <body>
-        
-        <div id="overlay">
-          <h1> Yalavarthi : <b>Coding and Art ethusiast</b></h1>
-          <p>do { enjoy(); } while(coding || drawing == play);  <a href="paper/files/Deloitte.pdf">Resume</a></p>
-          
-        </div>
-        
-        
-        
-        <script>
-        
-          document.getElementById("overlay").style.display = "block";
-        
-        </script>
-</head>
-<body>
-
-<canvas id="canvas"></canvas>
-</body>
+		</script>
+    </body>
+    
 </html>

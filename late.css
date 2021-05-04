@@ -1,0 +1,131 @@
+/*mobile-first view*/
+main {
+        box-sizing: content-box;
+        display: grid;
+		grid-template-columns: 1fr;
+		left: 1ch;
+		max-width: 60ch;
+		grid-gap:  2ch;
+        font-size: 0.9rem;
+	}
+main div {
+        border-top: 1px solid rgb(200,200,200);
+        padding-top: 1ch;
+		min-height: 1ch;
+		margin-bottom: 2ch;
+	}
+div ol{
+    display: inline;
+    list-style-type: none;
+}
+div ol li{
+    display: inline;
+}
+div ol li img{
+    height: 10ch;
+    width: 10ch;
+}
+.books{
+    height: 14ch;
+    width: 10ch;
+}
+.invi{
+    visibility: hidden;
+}
+
+.span {
+		grid-column: span 2;
+		grid-column: 2;
+	}
+
+nav{
+    display: inline-block;
+    border-bottom: 10ch solid #000;
+    font-size: 0.9rem;
+}
+nav li{
+    margin-bottom: 2ch;
+}
+nav li a{
+    display: inline-block;
+    padding-right: 5ch;
+    border-left: 1ch solid #fff;
+    }
+a:hover{
+    background-color: rgb(200,200,200);
+    color: #000000;
+    /*border-left: 1ch solid rgb(200,200,200);*/
+}
+/*mediium width*/
+@media only screen and (min-width: 60ch){
+    main{
+        font-size: 1rem;
+    }
+    div ol li img{
+        height: 15ch;
+        width: 15ch;
+    }
+    nav{
+    display: inline-block;
+    border-bottom: 10ch solid #000;
+    font-size: 1rem;
+    }
+    .books{
+        height: 21ch;
+        width: 15ch;
+    }
+    nav li{
+        display: inline;
+    }
+    nav li a{
+    display: inline-block;
+    padding-right: 5ch;
+    border-left: 1ch solid #fff;
+    }
+}
+/*large width*/
+@media only screen and (min-width: 120ch){
+    main{
+        box-sizing: content-box;
+        display: grid;
+		grid-template-columns: 3fr 1fr;
+		left: 1ch;
+		max-width: 120ch;
+		grid-gap:  2ch;
+        font-size: 1.1rem;
+    }
+    div ol li img{
+        height: 20ch;
+        width: 20ch;
+    }
+    .books{
+        height: 27ch;
+        width: 20ch;
+    }
+    .span1 {
+        grid-column: 1;
+    }
+    .span2{
+        grid-row: 2;
+    }
+    nav{
+        visibility: hidden;
+    }
+    .invi{
+        visibility: visible;
+        grid-row: 1;
+        grid-column: 2;
+    }
+    .invi ul{
+        list-style-type: none;
+        margin: 1ch;
+        padding-left: 0;
+    }
+    .invi li{
+        margin-bottom: 2ch;
+    }
+    .invi li a{
+        display: block;
+        border-left: 1ch solid #fff;
+    }
+}
